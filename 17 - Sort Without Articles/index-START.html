@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Sort Without Articles</title>
 </head>
+
 <body>
 
   <style>
@@ -26,12 +28,12 @@
       padding: 0;
       box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
     }
-    
+
     #bands li {
       border-bottom: 1px solid #efefef;
       padding: 20px;
     }
-    
+
     #bands li:last-child {
       border-bottom: 0;
     }
@@ -40,16 +42,49 @@
       color: #ffc600;
       text-decoration: none;
     }
-
   </style>
 
-  <ul id="bands"></ul>
+  <ul id="bands">
+    <li>hello</li>
+  </ul>
 
-<script>
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+  <script>
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+    const list = document.querySelector("ul")
+
+    // bands.sort()
+    bands.sort((a, b) => {
+      if (a.slice(0, 3) === 'The') {
+        a = a.slice(4)
+      }
+      if (b.slice(0, 3) === 'The') {
+        b = b.slice(4)
+      }
+      if (a.slice(0, 1) === 'A' && a.slice(1, 2) == ' ') {
+        a = a.slice(2)
+      }
+      if (b.slice(0, 1) === 'A' && b.slice(1, 2) == ' ') {
+        b = b.slice(2)
+      }
+      if (a.slice(0, 2) === 'An' && a.slice(2, 3) == ' ') {
+        a = a.slice(3)
+      }
+      if (b.slice(0, 2) === 'An' && b.slice(2, 3) == ' ') {
+        b = b.slice(3)
+      }
+      return a.localeCompare(b);
+    })
+
+    bands.forEach(name => {
+      var node = document.createElement("li");
+      var textnode = document.createTextNode(name);
+      node.appendChild(textnode);
+      list.appendChild(node);
+    })
 
 
-</script>
+  </script>
 
 </body>
+
 </html>
