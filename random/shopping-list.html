@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Shopping List</title>
+    <style>
+        div {
+            border: 1px solid black;
+            height: 300px;
+            width: 400px;
+            padding: 10px
+        }
+
+        h1 {
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>My shopping list</h1>
+        <p>Enter a new item:</p>
+        <input type="text">
+        <button onclick="appendItem()">Add item</button>
+        <ul class="items">
+
+        </ul>
+    </div>
+
+    <script>
+
+        const button = document.querySelector('button')
+        const list = document.querySelector('ul.items')
+        const input = document.querySelector('input')
+        var deleteIt = function () {
+            this.parentElement.remove()
+        }
+
+        var appendItem = function () {
+            const item = document.createElement('li')
+            item.innerText = document.querySelector('input').value
+            const deleteButton = document.createElement('button')
+            deleteButton.onclick = deleteIt
+            deleteButton.innerText = 'Delete'
+            deleteButton.style.marginLeft = '10px'
+            item.appendChild(deleteButton)
+            list.appendChild(item)
+            document.querySelector('input').value = ""
+            console.log('tapped')
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
