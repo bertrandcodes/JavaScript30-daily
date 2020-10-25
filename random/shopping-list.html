@@ -37,11 +37,13 @@
         const input = document.querySelector('input')
         var deleteIt = function () {
             this.parentElement.remove()
+            input.focus()
         }
 
         var appendItem = function () {
             const item = document.createElement('li')
             item.innerText = document.querySelector('input').value
+            item.style.margin = '10px'
             const deleteButton = document.createElement('button')
             deleteButton.onclick = deleteIt
             deleteButton.innerText = 'Delete'
