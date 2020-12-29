@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Window resize example</title>
+  <style>
+    .copy-this {
+      font-size: 3rem;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    [toc]
+    <br />
+    &lt;ul&gt;
+    <br />
+    <div class="middle"></div>
+    <br />
+    &lt;/ul&gt;
+    <br />
+    [/toc]
+  </div>
+
+  <p class="copy-this">
+
+  </p>
+
+  <script>
+    const addHere = document.querySelector('.middle')
+    const copyThis = document.querySelector('.copy-this')
+
+
+    function nvision(text, word) {
+      let updated = text.replace('<strong>', `<h2 id="${word}">`)
+      let moreUpdated = updated.replace('</strong>', '</h2>')
+      let removeTag = moreUpdated.replace(`<h2 id="${word}">`, '');
+      let addElement = `<li><a href="#${word}">${removeTag.replace('</h2>', '')}</a></li>`
+      let addThis = document.createTextNode(addElement);
+      addHere.appendChild(addThis)
+      let linebreak = document.createElement("br");
+      addHere.appendChild(linebreak);
+      copyThis.innerText = moreUpdated;
+      return moreUpdated
+    }
+
+    // nvision('<strong>Cause for Concern</strong>', 'cause')
+  </script>
+</body>
+
+</html>
